@@ -52,17 +52,17 @@ Rails.application.configure do
     # routes, locales, etc. This feature depends on the listen gem.
     config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-    # require 'tlsmail'
-    # Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
-    # ActionMailer::Base.delivery_method = :smtp
-    # config.action_mailer.perform_deliveries = true
-    # config.action_mailer.default :charset => "utf-8"
-    # ActionMailer::Base.smtp_settings = {
-    #     :address              => "smtp.gmail.com",
-    #     :port                 => 587,
-    #     :user_name            => "kaibrabo@gmail.com",
-    #     :password             => 'kaibrabo100491',
-    #     :authentication       => "plain",
-    #     :enable_starttls_auto => true
-    # }
+    config.action_mailer.raise_delivery_errors = true
+
+    ActionMailer::Base.delivery_method = :smtp
+    config.action_mailer.perform_deliveries = true
+    config.action_mailer.default :charset => "utf-8"
+    ActionMailer::Base.smtp_settings = {
+        :address              => "smtp.gmail.com",
+        :port                 => 587,
+        :user_name            => "kaibrabo@gmail.com",
+        :password             => 'kaibrabo100491',
+        :authentication       => "plain",
+        :enable_starttls_auto => true
+    }
 end

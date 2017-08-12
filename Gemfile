@@ -8,6 +8,8 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.2'
 
+gem 'devise'
+
 group :production do
     # Use pg as the production database for Active Record
     gem 'pg'
@@ -35,8 +37,6 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 gem 'thor', '0.19.1'
-
-gem 'devise'
 
 group :development do
     gem 'listen', '~> 3.0.5'
