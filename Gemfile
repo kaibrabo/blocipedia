@@ -38,6 +38,12 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'thor', '0.19.1'
 
+# CSS Styling BootStrap
+gem 'bootstrap-sass'
+
+# IRB Shell Alternative
+gem 'pry-rails', :group => :development
+
 group :development do
     gem 'listen', '~> 3.0.5'
 end
