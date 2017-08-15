@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 RSpec.describe WelcomeController, type: :controller do
 
     context "when guest user" do
@@ -19,8 +18,5 @@ RSpec.describe WelcomeController, type: :controller do
         end
     end
 
-    # context "when user is signed up"
-    #
-    # end
 
 end
