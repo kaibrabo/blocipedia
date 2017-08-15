@@ -1,10 +1,11 @@
 include RandomData
+include FactoryGirl
 
 20.times do
-    Wikis.create!(
-        title: RandomData.random_sentence,
-        body: RandomData.random_paragraph
-    )
+    FactoryGirl.create(:wiki) do |wiki|
+        wiki.title = RandomData.random_sentence,
+        wiki.body = RandomData.random_paragraph
+    end
 end
 wikis = Wiki.all
 
