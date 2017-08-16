@@ -1,2 +1,7 @@
-<h1>Wiki#show</h1>
-<p>Find me in app/views/wiki/show.html.erb</p>
+<h1><%= @wiki.title %></h1>
+
+<div class="col-md-4">
+    <%= link_to "Edit Wiki", edit_wiki_path, class: 'btn btn-success' %>
+</div>
+
+ <p><%= @wiki.body %></p>
