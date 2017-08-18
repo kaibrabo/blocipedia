@@ -44,6 +44,11 @@ gem 'bootstrap-sass'
 # IRB Shell Alternative
 gem 'pry-rails', :group => :development
 
+# Authorization
+gem 'pundit'
+
+
+
 group :development do
     gem 'listen', '~> 3.0.5'
 end
