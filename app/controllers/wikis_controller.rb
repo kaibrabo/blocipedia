@@ -2,6 +2,8 @@ class WikisController < ApplicationController
 
     skip_before_action :authenticate_user!, only: [:index, :show]
 
+    # before_action :authorize_user, except: [:index, :show]
+
     def index
 
         @wikis = Wiki.all
@@ -63,5 +65,14 @@ class WikisController < ApplicationController
             render :show
         end
     end
+
+    private
+
+    # def authorize_user
+    #     unless current_user.admin?
+    #         flash[:alert] = "You must be an admin to do that."
+    #         redirect_to wikis_path
+    #     end
+    # end
 
 end
