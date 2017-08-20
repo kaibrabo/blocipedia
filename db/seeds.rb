@@ -9,6 +9,14 @@ include FactoryGirl
 end
 wikis = Wiki.all
 
+5.times do
+    FactoryGirl.create(:user) do |user|
+        user.email = :email,
+        user.password = "password"
+    end
+end
+
 
 puts "Seed finished"
 puts "#{Wiki.count} wikis created"
+puts "#{User.count} users created"

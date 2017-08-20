@@ -1,5 +1,5 @@
 FactoryGirl.define do
-    pw = RandomData.random_sentence
+    pw = RandomData.random_word
 
     factory :user do
         sequence(:email){|n| "user#{n}@factory.com" }
