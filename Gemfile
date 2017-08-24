@@ -47,7 +47,11 @@ gem 'pry-rails', :group => :development
 # Authorization
 gem 'pundit'
 
+# Stripe Credit Card Charging
+gem 'stripe'
 
+# Handles Sensitive Data with ENV
+gem 'figaro'
 
 group :development do
     gem 'listen', '~> 3.0.5'

@@ -1,22 +1,21 @@
 include RandomData
 include FactoryGirl
 
+puts "Seeding..."
+
+5.times do
+    FactoryGirl.create(:user)
+end
+
+puts "#{User.count} users created"
+
 20.times do
-    FactoryGirl.create(:wiki) do |wiki|
+    FactoryGirl.create(:wiki, user: User.first) do |wiki|
         wiki.title = RandomData.random_sentence,
         wiki.body = RandomData.random_paragraph
     end
 end
-wikis = Wiki.all
 
-5.times do
-    FactoryGirl.create(:user) do |user|
-        user.email = :email,
-        user.password = "password"
-    end
-end
-
-
-puts "Seeding finished"
 puts "#{Wiki.count} wikis created"
-puts "#{User.count} users created"
+
+puts "Seed finished"

@@ -8,6 +8,9 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- <%= tag :meta, :name=> 'stripe-key', :content => Rails.configuration.stripe[:publishable_key] %> -->
+
 </head>
 
 <body>
@@ -27,6 +30,13 @@
         <ul class="nav nav-tabs">
             <li><%= link_to "Home", root_path %></li>
             <li><%= link_to "About", about_path %></li>
+            <li><%= link_to "Wikis", wikis_path %></li>
+
+            <% if current_user.is_premium %>
+                <li><%= link_to "Go Standard", root_path %></li>
+            <% else %>
+                <li><%= link_to "Go Premium", new_charge_path %></li>
+            <% end %>
         </ul>
 
         <% if flash[:notice] %>

@@ -10,6 +10,29 @@ class User < ApplicationRecord
     enum role: [:standard, :premium, :admin]
 
 
+    def to_premium
+        self.role = :premium
+        self.save!
+    end
+
+    def is_premium
+        self.role == "premium"
+    end
+
+    def to_admin
+        self.role = :admin
+        self.save!
+    end
+
+    def to_standard
+        self.role = :standard
+        self.save!
+    end
+
+    def is_standard
+        self.role == "standard"
+    end
+
     private
 
     def default_to_standard_role

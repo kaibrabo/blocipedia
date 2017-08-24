@@ -1,8 +1,12 @@
 FactoryGirl.define do
-    pw = RandomData.random_word
+    sequence :email do |n|
+        "user#{n}@factory.com"
+    end
+
+    pw = RandomData.random_sentence
 
     factory :user do
-        sequence(:email){|n| "user#{n}@factory.com" }
+        email { generate(:email) }
         confirmed_at Time.now
         password pw
         password_confirmation pw

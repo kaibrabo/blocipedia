@@ -67,3 +67,10 @@ Rails.application.configure do
         :enable_starttls_auto => true
     }
 end
+
+Rails.configuration.stripe = {
+  :publishable_key => 'pk_test_BBC1OG0zdp0BaELhgTcmVG2o',
+  :secret_key      => 'sk_test_X6gsTBdd8hNplRt8VRu0fJLV'
+}
+
+Stripe.api_key = Rails.configuration.stripe[:secret_key]
