@@ -32,11 +32,14 @@
             <li><%= link_to "About", about_path %></li>
             <li><%= link_to "Wikis", wikis_path %></li>
 
-            <% if current_user.is_premium %>
-                <li><%= link_to "Go Standard", root_path %></li>
-            <% else %>
-                <li><%= link_to "Go Premium", new_charge_path %></li>
+            <% if user_signed_in? %>
+                <% if current_user.is_premium %>
+                    <li><%= link_to "Go Standard", downgrade_index_path %></li>
+                <% else %>
+                    <li><%= link_to "Go Premium", new_charge_path %></li>
+                <% end %>
             <% end %>
+
         </ul>
 
         <% if flash[:notice] %>

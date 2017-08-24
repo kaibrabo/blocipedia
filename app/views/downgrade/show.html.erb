@@ -1,2 +1,13 @@
-<h1>Downgrade#show</h1>
-<p>Find me in app/views/downgrade/show.html.erb</p>
+<h1>Downgrade to Standard user</h1>
+
+<p>
+    When downgrading your account to Standard from Premium, your wiki index will become public.
+</p>
+<p>
+    Private Wikis remain a feature of Premium users only, and if you decided to switch back, the upgrade is just $15!
+
+</p>
+
+<% current_user %>
+    <button type="button" class="btn btn-primary">Go Standard</button>
+<% end %>
