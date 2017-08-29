@@ -24,6 +24,10 @@ class User < ApplicationRecord
         self.save!
     end
 
+    def is_admin
+        self.role == "admin"
+    end
+
     def to_standard
         self.role = :standard
         self.save!

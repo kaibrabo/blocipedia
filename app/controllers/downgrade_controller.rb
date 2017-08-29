@@ -5,8 +5,10 @@ class DowngradeController < ApplicationController
 
     def confirm
         if user_signed_in?
+            current_user.wikis.where(private: true).update_all(private: false)
             current_user.to_standard
-            redirect_to edit_user_registration_path
+            flash[:notice] = "You are now a Standard Member."
+            redirect_to wikis_path
         end
     end
 end

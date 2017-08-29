@@ -10,7 +10,6 @@
 
 <% if user_signed_in? %>
     <% if current_user.is_premium %>
-        <%= link_to 'Go Standard', confirm_downgrade_path,
-      :class => "btn btn-primary" %>
+        <%= link_to 'Go Standard', confirm_downgrade_path, :class => "btn btn-primary" %>
     <% end %>
 <% end %>

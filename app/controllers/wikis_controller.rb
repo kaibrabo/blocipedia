@@ -3,8 +3,8 @@ class WikisController < ApplicationController
     skip_before_action :authenticate_user!, only: [:index, :show]
 
     def index
-
-        @wikis = Wiki.all
+        @private_wikis = Wiki.where(private: true)
+        @public_wikis = Wiki.where(private: false)
     end
 
     def show
@@ -18,10 +18,13 @@ class WikisController < ApplicationController
     end
 
     def create
+
         @wiki = Wiki.new
         @wiki.title = params[:wiki][:title]
         @wiki.body = params[:wiki][:body]
         @wiki.user = current_user
+        # premium and admin users only
+        @wiki.private = params[:wiki][:private]
 
         if @wiki.save!
             flash[:notice] = "Wiki was Saved."
@@ -42,6 +45,8 @@ class WikisController < ApplicationController
         @wiki = Wiki.find(params[:id])
         @wiki.title = params[:wiki][:title]
         @wiki.body = params[:wiki][:body]
+        # premium and admin users only
+        @wiki.private = params[:wiki][:private]
 
         if @wiki.save
             flash[:notice] = "Wiki was updated."
@@ -50,9 +55,11 @@ class WikisController < ApplicationController
             flash.now[:alert] = "There was an error saving the post. Please try again."
             render :edit
         end
+
     end
 
     def destroy
+
         @wiki = Wiki.find(params[:id])
 
         if @wiki.destroy
@@ -66,11 +73,5 @@ class WikisController < ApplicationController
 
     private
 
-    # def authorize_user
-    #     unless current_user.admin?
-    #         flash[:alert] = "You must be an admin to do that."
-    #         redirect_to wikis_path
-    #     end
-    # end
 
 end

@@ -4,12 +4,39 @@
 <%= link_to "New Wiki", new_wiki_path, class: 'btn btn-success' %>
 </div>
 
-<% @wikis.each do |wiki| %>
-   <div class="media">
-        <div class="media-body">
-          <h4 class="media-heading">
-            <%= link_to wiki.title, wiki %>
-          </h4>
-        </div>
-      </div>
- <% end %>
+<h2>Private</h2>
+    <% if user_signed_in? %>
+        <% if current_user.is_premium || current_user.is_admin %>
+            <p>
+                 Premium and Admin Content
+            </p>
+
+            <% @private_wikis.each do |wiki| %>
+               <div class="media">
+                    <div class="media-body">
+                      <h4 class="media-heading">
+                        <%= link_to wiki.title, wiki %>
+                      </h4>
+                    </div>
+                  </div>
+             <% end %>
+
+        <% else %>
+            <p>
+                 No access for Standard users to Premium and Admin Content
+            </p>
+            <h4><em>Go <%= link_to "Premium", new_charge_path %> and create private Wikis</em></h4>
+        <% end %>
+    <% end %>
+
+<h2>Public</h2>
+
+    <% @public_wikis.each do |wiki| %>
+       <div class="media">
+            <div class="media-body">
+              <h4 class="media-heading">
+                <%= link_to wiki.title, wiki %>
+              </h4>
+            </div>
+          </div>
+     <% end %>
