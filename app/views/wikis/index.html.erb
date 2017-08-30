@@ -3,7 +3,8 @@
 <div class="col-md-4">
 <%= link_to "New Wiki", new_wiki_path, class: 'btn btn-success' %>
 </div>
-
+<br />
+<br />
 <h2>Private</h2>
     <% if user_signed_in? %>
         <% if current_user.is_premium || current_user.is_admin %>

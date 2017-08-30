@@ -1,4 +1,22 @@
-<h1>WikiWaki</h1>
+<h1>Wiki Waki</h1>
 
+<h3>Welcome to Wiki Waki</h3>
+<br />
+<h4> Our mission with Wiki Waki is to bring unlimited knowledge to those who seek it.</h4>
+<br />
 
+<ul>
+    <li>
+        The first place to start is the
+
+    <%= link_to "Wikis", wikis_path, class: 'btn btn-primary'%>
+
+        tab.  This is where you'll find our contents.
+    </li>
+<br />
+    <li>
+        You'll have to purchase a <%= link_to "Premium", new_charge_path, class: 'btn btn-success' %> subscription, if you would like to utilize special features like creating Private Wikis.  If you decide to cancel, the private wikis you created will become available to the public.
+    </li>
+</ul>
+<br />
 <p>views/welcome/index</p>
