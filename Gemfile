@@ -53,6 +53,9 @@ gem 'stripe'
 # Handles Sensitive Data with ENV
 gem 'figaro'
 
+# Markdown Syntax in wiki/edit
+gem 'redcarpet'
+
 group :development do
     gem 'listen', '~> 3.0.5'
 end
