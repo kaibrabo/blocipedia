@@ -21,6 +21,24 @@
             <%= f.label :body %>
             <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter Wiki body" %>
         </div>
+
+        <div class="form-group">
+
+        <p>Add Collaborators</p>
+        <% if current_user.is_premium || current_user.is_admin %>
+            <div id="collaborators_checkboxes">
+                <%= collection_check_boxes(:collaborators, :user_id, User.all, :id, :email) do |f| %>
+                    <%= f.check_box checked: @wiki.collaborators.map{|c| c.user_id}.include?(f.value) %>
+                    <%= f.label %>
+                    <hr />
+                <% end %>
+            </div>
+        <% else %>
+            Need to go <em><%= link_to "Premium", new_charge_path %></em> to add Collaborators
+        <% end %>
+
+        </div>
+
         <div class="form-group">
             <!-- Private Wikis -->
             <%= render :partial => 'wikis/form', :locals=>{:f=>f} %>
@@ -31,5 +49,3 @@
         <% end %>
     </div>
 </div>
-
-<p>views/wiki/edit</p>

@@ -1,11 +1,21 @@
 include ApplicationHelper
+
 class WikisController < ApplicationController
 
     skip_before_action :authenticate_user!, only: [:index, :show]
 
     def index
-        @private_wikis = Wiki.where(private: true)
+
+        @wikis = policy_scope(Wiki)
+
+        if current_user.premium?
+            @private_wikis = Wiki.where(private: true)
+        else
+            @private_wikis = Wiki.joins(:collaborators).where('private = ? AND (wikis.user_id = ? OR collaborators.user_id = ?)', true, current_user.id, current_user.id)
+        end
+
         @public_wikis = Wiki.where(private: false)
+
     end
 
     def show
@@ -26,6 +36,7 @@ class WikisController < ApplicationController
         @wiki.user = current_user
         # premium and admin users only
         @wiki.private = params[:wiki][:private]
+        @wiki.collaborators = params[:wiki][:collaborators]
 
         if @wiki.save!
             flash[:notice] = "Wiki was Saved."
@@ -46,10 +57,18 @@ class WikisController < ApplicationController
         @wiki = Wiki.find(params[:id])
         @wiki.title = params[:wiki][:title]
         @wiki.body = params[:wiki][:body]
+        is_private = params[:wiki][:private]
+        collaborators = params[:collaborators]
         # premium and admin users only
-        @wiki.private = params[:wiki][:private]
+
+        if current_user.premium? && is_private && collaborators
+            @wiki.private = is_private
+
+            @wiki.collaborators = Collaborator.create_from_user_ids(collaborators[:user_id], @wiki.id)
+        end
 
         if @wiki.save
+
             flash[:notice] = "Wiki was updated."
             redirect_to @wiki
         else
