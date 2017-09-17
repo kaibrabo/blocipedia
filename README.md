@@ -17,6 +17,7 @@ Markdown Syntax - [RedCarpet](https://github.com/vmg/redcarpet)
 
 ## Usage
 In commandline:
+`cd /[app]/`
 
 `bundle install`
 
