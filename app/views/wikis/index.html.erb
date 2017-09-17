@@ -1,43 +1,19 @@
-<h1>All Wikis</h1>
+<div class="jumbotron">
+    <h1>All Wikis</h1>
 
-<div class="col-md-4">
-    <%= link_to "New Wiki", new_wiki_path, class: 'btn btn-success' %>
-</div>
-<br />
-<br />
-<h2>Private</h2>
-    <% if user_signed_in? %>
-        <% if current_user.is_premium || current_user.is_admin || @private_wikis.length > 0 %>
-            <p>
-                Premium and Admin Content
-            </p>
-
-            <% @private_wikis.each do |wiki| %>
-                <div class="media">
-                    <div class="media-body">
-                        <h4 class="media-heading">
-                            <%= link_to markdown(wiki.title), wiki %>
-                        </h4>
-                    </div>
+    <div class=" center-block">
+        <%= link_to "New Wiki", new_wiki_path, class: 'btn btn-success' %>
+    </div>
+    <br />
+    <br />
+        <% @wikis.each do |wiki| %>
+            <div class="media">
+                <div class="media-body">
+                    <h4 class="media-heading">
+                        <%= link_to markdown(wiki.title), wiki %>
+                    </h4>
                 </div>
-            <% end %>
-
-        <% else %>
-            <p>
-                No access for Standard users to Premium and Admin Content
-            </p>
-            <h4><em>Go <%= link_to "Premium", new_charge_path %> and create private Wikis</em></h4>
-        <% end %>
-    <% end %>
-
-<h2>Public</h2>
-
-    <% @public_wikis.each do |wiki| %>
-        <div class="media">
-            <div class="media-body">
-                <h4 class="media-heading">
-                    <%= link_to markdown(wiki.title), wiki %>
-                </h4>
             </div>
-        </div>
-    <% end %>
+        <% end %>
+
+</div>

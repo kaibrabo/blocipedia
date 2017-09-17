@@ -1,11 +1,33 @@
-<h1>About Wiki Waki</h1>
+<h1>Welcome to Wiki Waki</h1>
 
-<h3>Here at Wiki Waki..</h3>
+<div class="jumbotron">
+    <h3>About Wiki Waki</h3>
+    <br />
+    <h4> Our mission with Wiki Waki is to bring unlimited knowledge to those who seek it.</h4>
+    <br />
+    <p>
+        We strive to the most stunning online information to the masses at no cost.  This program was built using Ruby on Rails.
+    </p>
 
-<p>
-    We strive to the most stunning online information to the masses at no cost.  This program was built using Ruby on Rails.
-</p>
+    <ul class="about_ul">
+        <li>
+            <p>
+                The first place to start is the
 
+                <%= link_to "Wikis", wikis_path, class: 'btn btn-primary'%>
 
-
-<p>app/views/welcome/about</p>
+                tab.  This is where you'll find our contents.
+            </p>
+        </li>
+    <br />
+        <li>
+            <p>
+                You'll have to purchase a <%= link_to "Premium", new_charge_path, class: 'btn btn-success' %> subscription, if you would like to utilize special features like creating Private Wikis.
+            </p>
+            <br />
+              <p>
+                  If you decide to cancel, the private wikis you created will become available to the public.
+              </p>
+        </li>
+    </ul>
+</div>

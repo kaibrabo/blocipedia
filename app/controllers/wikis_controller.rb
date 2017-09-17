@@ -8,14 +8,6 @@ class WikisController < ApplicationController
 
         @wikis = policy_scope(Wiki)
 
-        if current_user.premium?
-            @private_wikis = Wiki.where(private: true)
-        else
-            @private_wikis = Wiki.joins(:collaborators).where('private = ? AND (wikis.user_id = ? OR collaborators.user_id = ?)', true, current_user.id, current_user.id)
-        end
-
-        @public_wikis = Wiki.where(private: false)
-
     end
 
     def show
@@ -36,7 +28,7 @@ class WikisController < ApplicationController
         @wiki.user = current_user
         # premium and admin users only
         @wiki.private = params[:wiki][:private]
-        @wiki.collaborators = params[:wiki][:collaborators]
+        @wiki.collaborators = params[:wiki][:collaborators] if params[:wiki][:collaborators]
 
         if @wiki.save!
             flash[:notice] = "Wiki was Saved."
