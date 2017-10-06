@@ -61,16 +61,16 @@ Rails.application.configure do
     ActionMailer::Base.smtp_settings = {
         :address              => "smtp.gmail.com",
         :port                 => 587,
-        :user_name            => "kaibrabo@gmail.com",
-        :password             => 'kaibrabo100491',
+        :user_name            => ENV["MAILER_EMAIL"],
+        :password             => ENV["MAILER_PASSWORD"],
         :authentication       => "plain",
         :enable_starttls_auto => true
     }
 end
 
 Rails.configuration.stripe = {
-  :publishable_key => 'pk_test_BBC1OG0zdp0BaELhgTcmVG2o',
-  :secret_key      => 'sk_test_X6gsTBdd8hNplRt8VRu0fJLV'
+  :publishable_key => ENV["PUB_KEY"],
+  :secret_key      => ENV["SEC_KEY"]
 }
 
 Stripe.api_key = Rails.configuration.stripe[:secret_key]
