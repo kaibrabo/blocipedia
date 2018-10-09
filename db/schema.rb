@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20170905174357) do
   create_table "collaborators", force: :cascade do |t|
     t.integer "user_id"
     t.integer "wiki_id"
+    t.integer "collaborator", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

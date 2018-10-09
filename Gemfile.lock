@@ -1,3 +1,14 @@
+GIT
+  remote: https://github.com/plataformatec/devise
+  revision: 94adec3ceef6a3e9eb6bdc4d3fa7ed4a3fc6b348
+  specs:
+    devise (4.5.0)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0, < 6.0)
+      responders
+      warden (~> 1.2.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -41,7 +52,7 @@ GEM
     arel (8.0.0)
     autoprefixer-rails (7.1.2.4)
       execjs
-    bcrypt (3.1.11)
+    bcrypt (3.1.12)
     bindex (0.5.0)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
@@ -49,12 +60,6 @@ GEM
     builder (3.2.3)
     coderay (1.1.1)
     concurrent-ruby (1.0.5)
-    devise (4.3.0)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0, < 5.2)
-      responders
-      warden (~> 1.2.3)
     diff-lcs (1.3)
     erubi (1.6.1)
     execjs (2.7.0)
@@ -221,7 +226,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass
-  devise
+  devise!
   factory_girl_rails
   figaro
   jbuilder (~> 2.5)
@@ -246,4 +251,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.15.4
+   1.16.1
