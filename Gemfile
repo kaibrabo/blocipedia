@@ -8,7 +8,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.2'
 
-gem 'devise'
+gem 'devise', git: 'https://github.com/plataformatec/devise'
 
 group :production do
     # Use pg as the production database for Active Record
